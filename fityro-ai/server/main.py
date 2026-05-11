@@ -9,6 +9,7 @@ import io, os, cv2, uuid, shutil, base64, joblib, time
 import numpy as np
 from typing import Optional
 import asyncio, requests
+from dotenv import load_dotenv
 import mediapipe as mp
 from utils.tryon import run_tryon
 from utils.ootd_tryon import run_ootd_tryon
@@ -28,13 +29,15 @@ from database import tryon_collection
 from routes.tryon_routes import router as tryon_router
 from routes.admin_users import router as admin_users_router
 from bson import ObjectId
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
+if os.name == "nt":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 app = FastAPI()
 security = HTTPBearer()
+load_dotenv()
 
+MONGO_URI = os.getenv("MONGO_URI")
 
-client = MongoClient("mongodb+srv://fityro_user:tNXmU1sVnrBltNgi@cluster0.7zsbalr.mongodb.net/?appName=Cluster0")
+client = MongoClient(MONGO_URI)
 db = client["fityro_db"]
 app.include_router(products_router)
 app.include_router(history_router)
@@ -64,7 +67,7 @@ def test_insert():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -72,6 +75,9 @@ app.add_middleware(
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+os.makedirs("static", exist_ok=True)
+os.makedirs("uploads", exist_ok=True)
+os.makedirs("temp", exist_ok=True)
 
 @app.get("/download/{filename}")
 async def download_image(filename: str):
@@ -148,7 +154,7 @@ async def tryon(
 
     elif cloth_url:
 
-        response = requests.get(cloth_url)
+        response = requests.get(cloth_url, timeout=10)
 
         if response.status_code != 200:
             raise HTTPException(

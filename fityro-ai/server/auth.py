@@ -1,6 +1,6 @@
 print("🔥 AUTH.PY LOADED FROM:", __file__)
 
-import hashlib
+import hashlib, os
 from passlib.context import CryptContext
 from jose import jwt, JWTError
 from datetime import datetime, timedelta
@@ -8,11 +8,13 @@ from fastapi import Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordBearer, HTTPBearer, HTTPAuthorizationCredentials
 from database import users_collection
 from bson import ObjectId
+from dotenv import load_dotenv
 
 security = HTTPBearer()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
-
-SECRET_KEY = "fityro-secret-key"
+load_dotenv()
+SECRET_KEY = os.getenv("JWT_SECRET")
+print("JWT SECRET:", SECRET_KEY)
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
