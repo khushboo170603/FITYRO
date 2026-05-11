@@ -1,0 +1,155 @@
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 80vh;
+  padding: 60px 120px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 1200px;   /* 🔥 THIS fixes alignment */
+  margin: 0 auto;
+
+  gap: 100px;
+}
+
+/* LEFT TEXT */
+.left {
+  flex: 1;
+  max-width: 520px;
+  font-family: "Playfair Display", serif;
+  color: #2a1f18;
+  
+}
+
+.left h2 {
+  font-size: 60px;
+  font-family: "Playfair Display", serif;
+  color: #2a1f18;
+  font-weight: 700;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.left p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* RIGHT VIDEO */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.reverse .right {
+  justify-content: flex-end; /* 🔥 flips alignment properly */
+}
+
+.video {
+  position: relative;
+  width: 520px;
+  height: 340px;
+  object-fit: cover;
+
+  border-radius: 20px;
+  /* 🔥 better depth */
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.15),
+    0 40px 100px rgba(0,0,0,0.25);
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.video:hover {
+  transform: scale(1.04) rotateX(2deg);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 244, 239, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.textContent {
+  position: absolute;
+  bottom: 15%;
+  left: 8%;
+  color: #333;
+  will-change: transform, opacity;
+}
+
+.textContent h2 {
+  font-size: clamp(36px, 5vw, 72px);
+  margin-bottom: 10px;
+}
+
+.textContent p {
+  font-size: 20px;
+  width: 60%;
+  color: #555;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.visionFix {
+  justify-content: center; /* overrides space-between */
+}
+
+.section:hover .left h2 {
+  transform: translateX(6px);
+}
+
+/* 🔥 glass card wrapper */
+.right::before {
+  content: "";
+  position: absolute;
+
+  width: 560px;
+  height: 380px;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+
+  z-index: 0;
+}
+
+.videoWrapper {
+  position: relative;
+}
+
+.playBtn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+  transition: 0.2s ease;
+}
+
+.playBtn:hover {
+  background: rgba(0,0,0,0.8);
+}

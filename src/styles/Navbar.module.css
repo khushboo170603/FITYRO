@@ -1,0 +1,289 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(200, 180, 160, 0.25);
+
+  padding: 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Slight drop shadow when user scrolls */
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Logo text */
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logoImg {
+  height: 40px;   /* controls final visible size */
+  width: auto;
+  object-fit: cover;
+  transform: scale(2.3);
+  transform-origin: center 34%;
+}
+
+.logoWrapper {
+  position: relative;
+  height: 48px;   /* adjust this only */
+  width: 48px;
+  overflow: hidden;
+}
+
+/* Center link area */
+.links {
+  display: flex;
+  gap: 32px;
+}
+
+/* Base link */
+.link {
+  font-size: 16px;
+  color: #444;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Underline Motion */
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 0%;
+  height: 2px;
+  background: #a57b5c;
+  transition: width 0.28s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* Try-On button (highlighted) */
+.tryOnBtn {
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: rgba(165, 123, 92, 0.22);
+  border: 1px solid rgba(165, 123, 92, 0.35);
+  color: #5b3f2d !important;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.tryOnBtn:hover {
+  background: rgba(165, 123, 92, 0.35);
+  border-color: rgba(165, 123, 92, 0.55);
+}
+
+/* Right side auth */
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* Login Button */
+.authBtn {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid rgba(180, 160, 140, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  color: #444;
+  transition: 0.25s ease;
+}
+
+.authBtn:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Register Button (primary) */
+.authPrimary {
+  padding: 6px 18px;
+  background: #b79c86;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.authPrimary:hover {
+  background: #a4836d;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: 260px;
+  transform-origin: top right;
+  animation: dropdownFade 0.2s ease;;
+  background: rgba(245, 241, 235, 0.9); /* soft cream glass */
+  backdrop-filter: blur(16px);
+
+  color: #3A2E2A;
+  border-radius: 16px;
+  padding: 12px;
+
+  border: 1px solid rgba(200, 180, 160, 0.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+
+  z-index: 1000;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.userInfo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  background: #E8E2D9; /* match UI */
+  color: #3A2E2A;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.avatarImg {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3A2E2A;
+}
+
+.email {
+  font-size: 12px;
+  color: #7A6F66;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(200, 180, 160, 0.4);
+  margin: 8px 0;
+}
+
+.item {
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  border-radius: 8px;
+  background: transparent;
+  color: #3A2E2A;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.item:hover {
+  background: rgba(165, 123, 92, 0.15); /* matches your tryOnBtn */
+}
+
+.logout {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  background: rgba(165, 123, 92, 0.15);
+  color: #8B3A3A;
+
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout:hover {
+  background: rgba(165, 123, 92, 0.25);
+}
+
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.avatarCircle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  background: #E8E2D9;
+  color: #3A2E2A;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.avatarWrapper:hover .avatarCircle {
+  background: #ddd5c8;
+}
+
+/* Arrow hidden initially */
+.arrow {
+  font-size: 12px;
+  color: #aaa;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+/* Show arrow on hover */
+.avatarWrapper:hover .arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Rotate when dropdown open */
+.rotate {
+  transform: rotate(180deg);
+}

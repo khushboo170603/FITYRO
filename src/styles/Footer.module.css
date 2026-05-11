@@ -1,0 +1,122 @@
+.footer {
+  width: 100%;
+  padding: 60px 8vw;
+  background: linear-gradient(180deg, #fff9f4, #fff3ea);
+  color: #333;
+  border-top: 1px solid rgba(200, 180, 160, 0.25);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+/* Top grid layout */
+.topRow {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Brand */
+.brand h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.brand p {
+  color: #555;
+  font-size: 15px;
+}
+
+/* Column headings */
+.column h4 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #4a372b;
+}
+
+/* Quick link buttons */
+.column button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+  text-align: left;
+  padding: 0;
+  margin-left: 0;
+  transition: color 0.25s ease;
+  display: block;
+}
+
+.column button:hover {
+  color: #a57b5c;
+}
+
+/* Legal links */
+.column a {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #444;
+  text-decoration: none;
+  
+
+  transition: color 0.25s ease;
+}
+
+.column a:hover {
+  color: #a57b5c;
+}
+
+/* Socials */
+.socials {
+  display: flex;
+  gap: 14px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  fill: #666;
+  transition: fill 0.3s ease;
+}
+
+.icon:hover {
+  fill: #a57b5c;
+}
+
+/* Bottom Footer Line */
+.bottomLine {
+  padding-top: 16px;
+  border-top: 1px solid rgba(200, 180, 160, 0.25);
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .footer {
+    padding: 60px 4vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .topRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+    .footer {
+      padding: 40px 4vw;
+    }
+}
+
+@media (max-width: 600px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+    .footer {
+      padding: 30px 20px;
+    }
+}

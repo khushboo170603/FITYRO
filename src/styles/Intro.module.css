@@ -1,0 +1,99 @@
+.introcontainer {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+/* Background Video */
+.video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(0.6); /* slight dim for readability */
+  z-index: 0;
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.center {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  /* Center the content perfectly */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;     /* full height */
+  width: 100vw;      /* full width */
+
+  transform: none;   /* remove the upward shift */
+}
+
+/* Title */
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: 6px;
+  margin: 0;
+  padding: 0;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-weight: 300;
+  margin-top: 12px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: color 0.3s ease;
+}
+
+/* Buttons */
+.enterBtn {
+  padding: 14px 40px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.enterBtn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+
+/* Button fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
